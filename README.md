@@ -91,10 +91,14 @@ Background:
 
 - output: UL demodulation
   - SNR:10dB (UL1 to DL3's image)
+  - UL1 demodulation
 ![image](https://user-images.githubusercontent.com/87049112/143378064-f706f010-5fe0-4001-a483-eb9416cc0711.png)
+  - UL3 demodulation
 ![image](https://user-images.githubusercontent.com/87049112/143378182-3d5ddde0-607f-48ec-9c61-7a45442cf7d3.png)
   - SNR:27dB (UL1 to DL3's image)
+  - UL1 demodulation
 ![image](https://user-images.githubusercontent.com/87049112/143387597-b744a83d-46a2-4ae8-9d99-c3bf510cee8d.png)
+  - UL3 demodulation
 ![image](https://user-images.githubusercontent.com/87049112/143387626-03088424-e85a-4795-b2aa-e1b800943190.png)
 
 **Summary:**        

@@ -65,7 +65,7 @@ Background:
      - PA.flag = 'on'
  
   - output: signal (B1+B3 FDD waveform)
-![image](https://user-images.githubusercontent.com/87049112/143356478-588d2fcc-7604-43a2-8952-a04558ab051c.png)
+![image](https://user-images.githubusercontent.com/87049112/143376793-9d1fefa2-5987-4e5e-810e-6fc84f19c938.png)
 
 # Case1: Evaluate the DL leakage impact UL performance
   1. signal combination
@@ -86,12 +86,16 @@ Background:
     - NCarriers = 1
     
 - output: signal + BPF
-![image](https://user-images.githubusercontent.com/87049112/143365087-820b56f7-5cc8-49ea-8992-e118f1e820c9.png)
+![image](https://user-images.githubusercontent.com/87049112/143377144-dc7a4b84-c4ec-4bae-a10e-9574716ae0cc.png)
+![image](https://user-images.githubusercontent.com/87049112/143377591-4879e9ce-de6d-4bbc-9817-eea7a5ed7b1c.png)
 
 - output: UL demodulation
-![image](https://user-images.githubusercontent.com/87049112/143365643-90f140e9-82bf-4a3a-92c0-7c714fa212f0.png)
+![image](https://user-images.githubusercontent.com/87049112/143378064-f706f010-5fe0-4001-a483-eb9416cc0711.png)
+![image](https://user-images.githubusercontent.com/87049112/143378182-3d5ddde0-607f-48ec-9c61-7a45442cf7d3.png)
 
-**Summary: The parameters of _DL leakage(LeakagedB_DL2UL)_ and _UL BPF(BPF1_fir_fcutoffL, BPF1_fir_K_AttdB,...)_ with impact the demodulation performance**
+**Summary:**        
+**1. The parameters of _DL leakage(LeakagedB_DL2UL)_ will impact the UL1 demodulation performance, the DL3's image overlape with UL1 signal, the EVM of UL1 is up to 18%(need to improvement)**     
+**2. The parameters of _DL leakage(LeakagedB_DL2UL) and UL BPF_ will impact the UL3 demodulation performance, the DL3's aclr overlape with UL3 signal, the EVM of UL3 is 4.68% at UL3's high freq. part**
 
 # Case2: Evaluate the DL signal to ORX, ORX is RF sampling architecture
 on-goin...

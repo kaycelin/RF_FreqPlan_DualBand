@@ -102,9 +102,9 @@ Background:
 ![image](https://user-images.githubusercontent.com/87049112/143387626-03088424-e85a-4795-b2aa-e1b800943190.png)
 
 **Summary:**        
-**1. The parameters of _DL leakage(LeakagedB_DL2UL)_ will impact the UL1 demodulation performance, the DL3's image overlape with UL1 signal, the EVM of UL1 is up to 18%(need to improvement)** 
-**1b. SNR 10dB introudce to UL1 EVM 18%, SNR 27dB introduce to UL1 EVM 5.21%**
-**2. The parameters of _DL leakage(LeakagedB_DL2UL) and UL BPF_ will impact the UL3 demodulation performance, the DL3's aclr overlape with UL3 signal, the EVM of UL3 is 4.68% at UL3's high freq. part**
+- **1. The parameters of _DL leakage(LeakagedB_DL2UL)_ will impact the UL1 demodulation performance, the DL3's image overlape with UL1 signal, the EVM of UL1 is up to 18%(need to improvement)**       
+- **1b. SNR 10dB introudce to UL1 EVM 18%, SNR 27dB introduce to UL1 EVM 5.21%**      
+- **2. The parameters of _DL leakage(LeakagedB_DL2UL) and UL BPF_ will impact the UL3 demodulation performance, the DL3's aclr overlape with UL3 signal, the EVM of UL3 is 4.68% at UL3's high freq. part**     
 
-# Case2: Evaluate the DL signal to ORX, ORX is RF sampling architecture
+# Case2: Evaluate the DL signal to ORX, ORX is RF sampling architecture     
 on-goin...

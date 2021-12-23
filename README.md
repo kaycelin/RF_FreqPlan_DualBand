@@ -145,26 +145,26 @@ Background:
       - output: ADC sampling
 ![image](https://user-images.githubusercontent.com/87049112/147213364-52947542-1c51-422c-a9fe-591b94251fd1.png)
 
-    - input: ADC Interleaving Error
-      - flag_ADCError = 'NA' % No Error or Not interleaving ADC
-      - flag_ADCError = 'Level'
-      - flag_ADCError = 'Gain'
-      - flag_ADCError = 'Phase'
-      - flag_ADCError = 'All'
+      - input: ADC Interleaving Error
+        - flag_ADCError = 'NA' % No Error or Not interleaving ADC
+        - flag_ADCError = 'Level'
+        - flag_ADCError = 'Gain'
+        - flag_ADCError = 'Phase'
+        - flag_ADCError = 'All'
 
-      - error_ADCItl_Level = 1*0.1*[1, 3, -2, 0]
-      - error_ADCItl_GaindB = 1*0.1*[-1, 0.8, -0.4, 0.5]
-      - error_ADCItl_GaindB = 1*[0.5, 0, -0.5, 0]
-      - error_ADCItl_PhaseDEG = 1*0.1*[3, 1, -1, -2]
+        - error_ADCItl_Level = 1*0.1*[1, 3, -2, 0]
+        - error_ADCItl_GaindB = 1*0.1*[-1, 0.8, -0.4, 0.5]
+        - error_ADCItl_GaindB = 1*[0.5, 0, -0.5, 0]
+        - error_ADCItl_PhaseDEG = 1*0.1*[3, 1, -1, -2]
 
-    - output: ADC Interleaving Error
+      - output: ADC Interleaving Error
 ![image](https://user-images.githubusercontent.com/87049112/147213949-33e6956f-565c-4dc5-a90f-6e8ef3457a68.png)
 
- - ORX, NCO1+Decimation+NCO2      
+   - ORX, NCO1+Decimation+NCO2      
 ![image](https://user-images.githubusercontent.com/87049112/147214110-bdff92eb-e754-4322-9de2-f402b6af9d69.png)
 
-  - input: NCO1 of B1 and B3
-    - fORX1_NCO1 = -2123.732e6
-    - fORX3_NCO1 = -1826.232e6      
-    **_Why fORX1_NCO1 = -2123.732MHz? fORX3_NCO1 = -1826.232MHz? to match for B1 and B3 with NCO2=-16.268MHz, there is Only One NCO2 freqs settings_**
+    - input: NCO1 of B1 and B3
+      - fORX1_NCO1 = -2123.732e6
+      - fORX3_NCO1 = -1826.232e6      
+      **_Why fORX1_NCO1 = -2123.732MHz? fORX3_NCO1 = -1826.232MHz? to match for B1 and B3 with NCO2=-16.268MHz, there is Only One NCO2 freqs settings_**
 

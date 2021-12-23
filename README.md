@@ -66,6 +66,7 @@ Background:
  
   - output: signal (B1+B3 FDD waveform)
 ![image](https://user-images.githubusercontent.com/87049112/143376793-9d1fefa2-5987-4e5e-810e-6fc84f19c938.png)
+![image](https://user-images.githubusercontent.com/87049112/147171703-63f59a37-ae57-4919-aa31-36e42669988b.png)
 
 # Case1: Evaluate the DL leakage impact UL performance
   1. signal combination
@@ -91,14 +92,14 @@ Background:
 
 - output: UL demodulation
   - SNR:10dB (UL1 to DL3's image)
-  - UL1 demodulation
+    - UL1 demodulation
 ![image](https://user-images.githubusercontent.com/87049112/143378064-f706f010-5fe0-4001-a483-eb9416cc0711.png)
-  - UL3 demodulation
+    - UL3 demodulation
 ![image](https://user-images.githubusercontent.com/87049112/143378182-3d5ddde0-607f-48ec-9c61-7a45442cf7d3.png)
-  - SNR:27dB (UL1 to DL3's image)
-  - UL1 demodulation
+  - SNR:27dB (UL1 to DL3's image),(change the mixer imbalance parameters to reduce the DL3's image)
+    - UL1 demodulation
 ![image](https://user-images.githubusercontent.com/87049112/143387597-b744a83d-46a2-4ae8-9d99-c3bf510cee8d.png)
-  - UL3 demodulation
+    - UL3 demodulation
 ![image](https://user-images.githubusercontent.com/87049112/143387626-03088424-e85a-4795-b2aa-e1b800943190.png)
 
 **Summary:**        
@@ -106,5 +107,64 @@ Background:
 - **1b. SNR 10dB introudce to UL1 EVM 18%, SNR 27dB introduce to UL1 EVM 5.21%**      
 - **2. The parameters of _DL leakage(LeakagedB_DL2UL) and UL BPF_ will impact the UL3 demodulation performance, the DL3's aclr overlape with UL3 signal, the EVM of UL3 is 4.68% at UL3's high freq. part**     
 
-# Case2: Evaluate the DL signal to ORX, ORX is RF sampling architecture     
-on-goin...
+# Case2: Evaluate the DL signal to ORX, ORX is RF sampling architecture (Take DL1 for example)
+  - ORX is RF sampling architecture, and ORX input signal should incloud the 3*Fundmental freq.
+    - fs_ADC = 5898.24e6
+    - fFundmax = max(band1DL.RFbwInband)
+    - NHD = 3+1
+    - fs_PAout = ceil(fFundmax*NHD/(fs_ADC/2))*fs_ADC
+    
+  - ORX path leakage/rejection/isolation...
+    - LeakagedB_B3ToB1 = -30
+
+  - signal DL to ORX:      
+![image](https://user-images.githubusercontent.com/87049112/147209828-67eb6f3f-98c5-4554-8d36-e932b6c66d52.png)
+
+  - ORX: Oberservation Receiver
+  - ORX path wo BPF: B1 and B3 share the same path
+    - b_BPF = {1} 
+    
+  - ORX, RF Sampling Receiver
+    - ORX, ADC Sampling
+      - input: ADC Quantization Error
+        - Vref = 1.4
+        - nbits = 10
+        - LSB = Vref/2^nbits
+        - flag_RemoveDC = 1
+        - flag_Dither = 0
+      - output: ADC Quantization
+        - with Dither, evm=0.3622
+        - without Dither, evm=0.1560      
+        **_Dither could reduce the Periodic Spurious introduced from ADC quantization error, but Dither will increae the Noise to signal_**
+        - original signal
+![image](https://user-images.githubusercontent.com/87049112/147212438-ef966279-8af1-47e6-bc84-9e35394d630d.png)  
+
+      - input: ADC noise psd 
+        - ratio_ADC1 = fs_ADC/fs
+        - IpwrdB1Hz_Noise_ADC1 = -180
+      - output: ADC sampling
+![image](https://user-images.githubusercontent.com/87049112/147213364-52947542-1c51-422c-a9fe-591b94251fd1.png)
+
+    - input: ADC Interleaving Error
+      - flag_ADCError = 'NA' % No Error or Not interleaving ADC
+      - flag_ADCError = 'Level'
+      - flag_ADCError = 'Gain'
+      - flag_ADCError = 'Phase'
+      - flag_ADCError = 'All'
+
+      - error_ADCItl_Level = 1*0.1*[1, 3, -2, 0]
+      - error_ADCItl_GaindB = 1*0.1*[-1, 0.8, -0.4, 0.5]
+      - error_ADCItl_GaindB = 1*[0.5, 0, -0.5, 0]
+      - error_ADCItl_PhaseDEG = 1*0.1*[3, 1, -1, -2]
+
+    - output: ADC Interleaving Error
+![image](https://user-images.githubusercontent.com/87049112/147213949-33e6956f-565c-4dc5-a90f-6e8ef3457a68.png)
+
+ - ORX, NCO1+Decimation+NCO2      
+![image](https://user-images.githubusercontent.com/87049112/147214110-bdff92eb-e754-4322-9de2-f402b6af9d69.png)
+
+  - input: NCO1 of B1 and B3
+    - fORX1_NCO1 = -2123.732e6
+    - fORX3_NCO1 = -1826.232e6      
+    **_Why fORX1_NCO1 = -2123.732MHz? fORX3_NCO1 = -1826.232MHz? to match for B1 and B3 with NCO2=-16.268MHz, there is Only One NCO2 freqs settings_**
+

@@ -162,9 +162,8 @@ Background:
 
    - ORX, NCO1+Decimation+NCO2      
 ![image](https://user-images.githubusercontent.com/87049112/147214110-bdff92eb-e754-4322-9de2-f402b6af9d69.png)
-
-    - input: NCO1 of B1 and B3
-      - fORX1_NCO1 = -2123.732e6
-      - fORX3_NCO1 = -1826.232e6      
+      - input: NCO1 of B1 and B3
+        - fORX1_NCO1 = -2123.732e6
+        - fORX3_NCO1 = -1826.232e6      
       **_Why fORX1_NCO1 = -2123.732MHz? fORX3_NCO1 = -1826.232MHz? to match for B1 and B3 with NCO2=-16.268MHz, there is Only One NCO2 freqs settings_**
 
